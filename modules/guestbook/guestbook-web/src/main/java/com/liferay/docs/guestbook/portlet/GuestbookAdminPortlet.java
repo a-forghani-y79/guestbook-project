@@ -4,7 +4,6 @@ import com.liferay.docs.guestbook.constants.GuestbookPortletKeys;
 import com.liferay.docs.guestbook.model.Guestbook;
 import com.liferay.docs.guestbook.service.GuestbookLocalService;
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.model.Portlet;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.ServiceContextFactory;
@@ -14,13 +13,12 @@ import org.osgi.service.component.annotations.Reference;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.Portlet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Component(
-        immediate = true,
-        property = {
-                "com.liferay.portlet.display-category=category.hidden",
+@Component(immediate = true,
+        property = {"com.liferay.portlet.display-category=category.hidden",
                 "com.liferay.portlet.scopeable=true",
                 "javax.portlet.display-name=Guestbooks",
                 "javax.portlet.expiration-cache=0",
@@ -28,13 +26,11 @@ import java.util.logging.Logger;
                 "javax.portlet.init-param.template-path=/",
                 "javax.portlet.init-param.view-template=/guestbook_admin/view.jsp",
                 "javax.portlet.name=" + GuestbookPortletKeys.GUESTBOOK_ADMIN,
-                "javax.portlet.resource-bundle=content.Language",
+                "javax.portlet.resource-bundle=context.Language",
                 "javax.portlet.security-role-ref=administrator",
                 "javax.portlet.supports.mime-type=text/html",
-                "com.liferay.portlet.add-default-resource=true"
-        },
-        service = Portlet.class
-)
+                "com.liferay.portlet.add-default-resource=true"},
+        service = Portlet.class)
 public class GuestbookAdminPortlet extends MVCPortlet {
 
     public void addGuestbook(ActionRequest request, ActionResponse response)
