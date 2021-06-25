@@ -15,6 +15,7 @@ import org.osgi.service.component.annotations.Component;
 		immediate = true,
 		property = {
 				"com.liferay.portlet.display-category=category.social",
+				"javax.portlet.name=" + GuestbookPortletKeys.GUESTBOOK,
 				"com.liferay.portlet.instanceable=false",
 				"com.liferay.portlet.scopeable=true",
 				"javax.portlet.display-name=Guestbook",
