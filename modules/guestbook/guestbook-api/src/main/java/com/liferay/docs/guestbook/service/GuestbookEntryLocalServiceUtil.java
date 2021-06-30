@@ -100,9 +100,11 @@ public class GuestbookEntryLocalServiceUtil {
 	 *
 	 * @param guestbookEntry the guestbook entry
 	 * @return the guestbook entry that was removed
+	 * @throws PortalException
 	 */
 	public static GuestbookEntry deleteGuestbookEntry(
-		GuestbookEntry guestbookEntry) {
+			GuestbookEntry guestbookEntry)
+		throws PortalException {
 
 		return getService().deleteGuestbookEntry(guestbookEntry);
 	}

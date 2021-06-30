@@ -106,9 +106,11 @@ public interface GuestbookEntryLocalService
 	 *
 	 * @param guestbookEntry the guestbook entry
 	 * @return the guestbook entry that was removed
+	 * @throws PortalException
 	 */
 	@Indexable(type = IndexableType.DELETE)
-	public GuestbookEntry deleteGuestbookEntry(GuestbookEntry guestbookEntry) throws PortalException;
+	public GuestbookEntry deleteGuestbookEntry(GuestbookEntry guestbookEntry)
+		throws PortalException;
 
 	/**
 	 * Deletes the guestbook entry with the primary key from the database. Also notifies the appropriate model listeners.
