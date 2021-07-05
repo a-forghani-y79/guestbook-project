@@ -3,7 +3,6 @@ package com.liferay.docs.guestbook.search;
 import com.liferay.docs.guestbook.model.Guestbook;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactory;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.Field;
