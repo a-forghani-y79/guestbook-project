@@ -10,7 +10,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 @Component(immediate = true,
-        property = "(indexer.class.name=com.liferay.docs.guestbook.model.GuestbookEntry)",
+        property = "indexer.class.name=com.liferay.docs.guestbook.model.GuestbookEntry",
         service = KeywordQueryContributor.class)
 public class GuestbookEntryKeywordQueryContributor implements KeywordQueryContributor {
     @Reference
@@ -21,6 +21,6 @@ public class GuestbookEntryKeywordQueryContributor implements KeywordQueryContri
         SearchContext searchContext = keywordQueryContributorHelper.getSearchContext();
         queryHelper.addSearchLocalizedTerm(booleanQuery, searchContext, Field.TITLE, false);
         queryHelper.addSearchLocalizedTerm(booleanQuery, searchContext, Field.CONTENT, false);
-        queryHelper.addSearchLocalizedTerm(booleanQuery, searchContext, "EntryEmail", false);
+        queryHelper.addSearchLocalizedTerm(booleanQuery, searchContext, "entryEmail", false);
     }
 }

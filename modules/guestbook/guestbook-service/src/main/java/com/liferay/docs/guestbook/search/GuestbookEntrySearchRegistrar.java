@@ -15,13 +15,13 @@ import org.osgi.service.component.annotations.Reference;
 @Component(immediate = true)
 public class GuestbookEntrySearchRegistrar {
 
-    @Reference(target = "(indexer-class.name=com.liferay.docs.guestbook.model.GuestbookEntry")
+    @Reference(target = "(indexer.class.name=com.liferay.docs.guestbook.model.GuestbookEntry)")
     protected ModelIndexerWriterContributor<GuestbookEntry> modelIndexerWriterContributor;
 
     @Reference
     protected ModelSearchRegistrarHelper modelSearchRegistrarHelper;
 
-    @Reference(target = "(indexer-class.name=com.liferay.docs.guestbook.model.GuestbookEntry")
+    @Reference(target = "(indexer.class.name=com.liferay.docs.guestbook.model.GuestbookEntry)")
     protected ModelSummaryContributor modelSummaryContributor;
 
     private ServiceRegistration<?> _serviceRegistration;

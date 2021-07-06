@@ -11,7 +11,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 @Component(immediate = true,
-        property = "indexer.class-name=com.liferay.docs.guestbook.model.Guestbook",
+        property = "indexer.class.name=com.liferay.docs.guestbook.model.Guestbook",
         service = ModelIndexerWriterContributor.class)
 public class GuestbookModelIndexerWriterContributor implements ModelIndexerWriterContributor<Guestbook> {
     @Reference

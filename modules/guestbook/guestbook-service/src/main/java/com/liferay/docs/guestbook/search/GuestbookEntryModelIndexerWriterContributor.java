@@ -10,33 +10,44 @@ import com.liferay.portal.search.spi.model.index.contributor.helper.ModelIndexer
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-@Component(immediate = true,
-property = "indexer-class.name=com.liferay.docs.guestbook.model.GuestbookEntry",
-service = ModelIndexerWriterContributor.class)
-public class GuestbookEntryModelIndexerWriterContributor implements ModelIndexerWriterContributor<GuestbookEntry> {
-
-    @Reference
-    private GuestbookEntryLocalService _guestbookEntryLocalService;
-
-    @Reference
-    DynamicQueryBatchIndexingActionableFactory dynamicQueryBatchIndexingActionableFactory;
+@Component(
+        immediate = true,
+        property = "indexer.class.name=com.liferay.docs.guestbook.model.GuestbookEntry",
+        service = ModelIndexerWriterContributor.class
+)
+public class GuestbookEntryModelIndexerWriterContributor
+        implements ModelIndexerWriterContributor<GuestbookEntry> {
 
     @Override
-    public void customize(BatchIndexingActionable batchIndexingActionable, ModelIndexerWriterDocumentHelper modelIndexerWriterDocumentHelper) {
-        batchIndexingActionable.setPerformActionMethod((GuestbookEntry entry)->{
-            Document document = modelIndexerWriterDocumentHelper.getDocument(entry);
-            batchIndexingActionable.addDocuments(document);
-        });
+    public void customize(
+            BatchIndexingActionable batchIndexingActionable,
+            ModelIndexerWriterDocumentHelper modelIndexerWriterDocumentHelper) {
 
+        batchIndexingActionable.setPerformActionMethod((GuestbookEntry entry) -> {
+            Document document = modelIndexerWriterDocumentHelper.getDocument(
+                    entry);
+
+            batchIndexingActionable.addDocuments(document);
+
+        });
     }
 
     @Override
     public BatchIndexingActionable getBatchIndexingActionable() {
-        return dynamicQueryBatchIndexingActionableFactory.getBatchIndexingActionable(_guestbookEntryLocalService.getIndexableActionableDynamicQuery());
+        return dynamicQueryBatchIndexingActionableFactory.getBatchIndexingActionable(
+                guestbookEntryLocalService.getIndexableActionableDynamicQuery());
     }
 
     @Override
-    public long getCompanyId(GuestbookEntry baseModel) {
-        return baseModel.getCompanyId();
+    public long getCompanyId(GuestbookEntry entry) {
+        return entry.getCompanyId();
     }
+
+    @Reference
+    protected DynamicQueryBatchIndexingActionableFactory
+            dynamicQueryBatchIndexingActionableFactory;
+
+    @Reference
+    protected GuestbookEntryLocalService guestbookEntryLocalService;
+
 }

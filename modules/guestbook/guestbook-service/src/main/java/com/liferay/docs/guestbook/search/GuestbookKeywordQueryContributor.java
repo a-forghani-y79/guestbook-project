@@ -10,7 +10,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 @Component(immediate = true,
-        property = "indexer.class-name=com.liferay.docs.guestbook.model.Guestbook",
+        property = "indexer.class.name=com.liferay.docs.guestbook.model.Guestbook",
         service = KeywordQueryContributor.class)
 public class GuestbookKeywordQueryContributor implements KeywordQueryContributor {
     @Reference

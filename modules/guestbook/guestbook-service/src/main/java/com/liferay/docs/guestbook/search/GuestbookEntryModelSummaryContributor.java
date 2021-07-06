@@ -11,8 +11,8 @@ import java.util.Locale;
 
 
 @Component(immediate = true,
-        service = ModelSummaryContributor.class,
-        property = "(indexer.class.name=com.liferay.docs.guestbook.model.GuestbookEntry)")
+        property = "indexer.class.name=com.liferay.docs.guestbook.model.GuestbookEntry",
+        service = ModelSummaryContributor.class)
 public class GuestbookEntryModelSummaryContributor implements ModelSummaryContributor {
     @Override
     public Summary getSummary(Document document, Locale locale, String snippet) {

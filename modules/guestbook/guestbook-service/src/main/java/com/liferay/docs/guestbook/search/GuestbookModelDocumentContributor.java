@@ -14,7 +14,7 @@ import org.osgi.service.component.annotations.Component;
 import java.util.Locale;
 
 @Component(immediate = true,
-        property = "indexer.class-name=com.liferay.docs.guestbook.model.Guestbook",
+        property = "indexer.class.name=com.liferay.docs.guestbook.model.Guestbook",
         service = ModelDocumentContributor.class
 )
 public class GuestbookModelDocumentContributor implements ModelDocumentContributor<Guestbook> {
