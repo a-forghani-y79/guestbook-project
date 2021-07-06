@@ -10,7 +10,7 @@
 %>
 
 <portlet:renderURL var="searchURL">
-    <portlet:param name="mcvPath" value="/guestbook/view_search.jsp" />
+    <portlet:param name="mvcPath" value="/guestbook/view_search.jsp" />
 </portlet:renderURL>
 <aui:form action="${searchURL}" name="fm">
     <div class="row">

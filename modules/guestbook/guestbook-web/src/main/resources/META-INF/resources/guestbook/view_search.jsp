@@ -10,7 +10,8 @@
 <%@ include file="../init.jsp" %>
 
 <% String keywords = ParamUtil.getString(request, "keywords");
-    long guestbookId = ParamUtil.getLong(request, "guestbookId"); %>
+    long guestbookId = ParamUtil.getLong(request, "guestbookId");
+%>
 
 
 <portlet:renderURL var="searchURL"><portlet:param name="mvcPath"
@@ -30,7 +31,6 @@
 </aui:form>
 
 <%
-
     SearchContext searchContext = SearchContextFactory.getInstance(request);
     searchContext.setKeywords(keywords);
     searchContext.setAttribute("paginationType", "more");
