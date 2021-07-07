@@ -27,7 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Component(immediate = true,
-        property = {"javax.portlet.name"},
+        property = {"javax.portlet.name="+GuestbookPortletKeys.GUESTBOOK},
         service = AssetRendererFactory.class)
 public class GuestbookEntryAssetRendererFactory
         extends BaseAssetRendererFactory<GuestbookEntry> {
@@ -58,6 +58,7 @@ public class GuestbookEntryAssetRendererFactory
         setPortletId(GuestbookPortletKeys.GUESTBOOK);
         setSearchable(true);
         setSelectable(true);
+        System.out.println("hi ali alia aliaalia");
     }
 
 

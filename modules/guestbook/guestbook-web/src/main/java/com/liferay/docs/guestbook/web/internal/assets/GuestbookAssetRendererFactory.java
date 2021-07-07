@@ -24,7 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Component(immediate = true,
-        property = ("javax.portlet.name=" + GuestbookPortletKeys.GUESTBOOK),
+        property = {"javax.portlet.name=" + GuestbookPortletKeys.GUESTBOOK},
         service = AssetRendererFactory.class)
 public class GuestbookAssetRendererFactory extends BaseAssetRendererFactory<Guestbook> {
     private ServletContext _servletContext;

@@ -111,7 +111,7 @@ public class GuestbookAssetRenderer extends BaseJSPAssetRenderer<Guestbook> {
 
     @Override
     public String getJspPath(HttpServletRequest httpServletRequest, String template) {
-        if (template.equals("TEMPLATE_FULL_CONTENT")) {
+        if (template.equals(TEMPLATE_FULL_CONTENT)) {
             httpServletRequest.setAttribute("gb_guestbook", _guestbook);
             return "/assets/guestbook/" + template + ".jsp";
         } else
