@@ -30,11 +30,11 @@
 			<finder-column name="groupId" />
 		</finder>
 		<finder name="G_S" return-type="Collection">
-			<finder-column name="groupId"></finder-column>
-			<finder-column name="status"></finder-column>
+			<finder-column name="groupId" />
+			<finder-column name="status" />
 		</finder>
 		<finder name="Status" return-type="Collection">
-			<finder-column name="status"></finder-column>
+			<finder-column name="status" />
 		</finder>
 
 		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry"/>
@@ -79,11 +79,11 @@
 			<finder-column name="guestbookId" />
 		</finder>
 		<finder name="G_S" return-type="Collection">
-			<finder-column name="groupId"></finder-column>
-			<finder-column name="status"></finder-column>
+			<finder-column name="groupId" />
+			<finder-column name="status" />
 		</finder>
 		<finder name="Status" return-type="Collection">
-			<finder-column name="status"></finder-column>
+			<finder-column name="status" />
 		</finder>
 
 		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry"/>
