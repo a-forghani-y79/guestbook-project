@@ -134,6 +134,10 @@ public class GuestbookLocalServiceImpl extends GuestbookLocalServiceBaseImpl {
         return guestbookPersistence.findByGroupId(groupId, start, end);
     }
 
+    public List<Guestbook> getGuestbooks(long groupId, int status){
+        return guestbookPersistence.findByG_S(groupId, status);
+    }
+
     public int getGuestbooksCount(long groupId) {
 
         return guestbookPersistence.countByGroupId(groupId);

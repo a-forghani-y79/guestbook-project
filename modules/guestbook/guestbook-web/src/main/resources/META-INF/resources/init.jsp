@@ -8,6 +8,7 @@
 <%@ taglib uri="http://liferay.com/tld/security" prefix="liferay-security" %>
 <%@ taglib uri="http://liferay.com/tld/asset" prefix="liferay-asset" %>
 <%@ taglib uri="http://liferay.com/tld/comment" prefix="liferay-comment" %>
+<%@ page import="com.liferay.portal.kernel.workflow.WorkflowConstants"%>
 
 <%@ page import="java.util.Map" %> 
 <%@ page import="java.util.HashMap" %>

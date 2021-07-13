@@ -303,6 +303,15 @@ public class GuestbookEntryLocalServiceWrapper
 	@Override
 	public java.util.List<com.liferay.docs.guestbook.model.GuestbookEntry>
 		getGuestbookEntries(
+			long groupId, long guestbookId, int status, int start, int end) {
+
+		return _guestbookEntryLocalService.getGuestbookEntries(
+			groupId, guestbookId, status, start, end);
+	}
+
+	@Override
+	public java.util.List<com.liferay.docs.guestbook.model.GuestbookEntry>
+		getGuestbookEntries(
 			long groupId, long guestbookId, int start, int end,
 			com.liferay.portal.kernel.util.OrderByComparator
 				<com.liferay.docs.guestbook.model.GuestbookEntry> obc) {

@@ -247,6 +247,10 @@ public interface GuestbookEntryLocalService
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<GuestbookEntry> getGuestbookEntries(
+		long groupId, long guestbookId, int status, int start, int end);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<GuestbookEntry> getGuestbookEntries(
 		long groupId, long guestbookId, int start, int end,
 		OrderByComparator<GuestbookEntry> obc);
 

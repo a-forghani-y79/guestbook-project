@@ -291,6 +291,10 @@ public class GuestbookLocalServiceUtil {
 		return getService().getGuestbooks(groupId);
 	}
 
+	public static List<Guestbook> getGuestbooks(long groupId, int status) {
+		return getService().getGuestbooks(groupId, status);
+	}
+
 	public static List<Guestbook> getGuestbooks(
 		long groupId, int start, int end) {
 

@@ -274,6 +274,13 @@ public class GuestbookEntryLocalServiceUtil {
 	}
 
 	public static List<GuestbookEntry> getGuestbookEntries(
+		long groupId, long guestbookId, int status, int start, int end) {
+
+		return getService().getGuestbookEntries(
+			groupId, guestbookId, status, start, end);
+	}
+
+	public static List<GuestbookEntry> getGuestbookEntries(
 		long groupId, long guestbookId, int start, int end,
 		OrderByComparator<GuestbookEntry> obc) {
 

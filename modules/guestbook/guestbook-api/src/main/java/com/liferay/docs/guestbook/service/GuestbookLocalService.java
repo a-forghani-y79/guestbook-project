@@ -262,6 +262,9 @@ public interface GuestbookLocalService
 	public List<Guestbook> getGuestbooks(long groupId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Guestbook> getGuestbooks(long groupId, int status);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Guestbook> getGuestbooks(long groupId, int start, int end);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
