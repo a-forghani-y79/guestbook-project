@@ -395,6 +395,15 @@ public class GuestbookLocalServiceUtil {
 			userId, guestbookId, name, serviceContext);
 	}
 
+	public static Guestbook updateStatus(
+			long userId, long guestbookId, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().updateStatus(
+			userId, guestbookId, status, serviceContext);
+	}
+
 	public static GuestbookLocalService getService() {
 		return _service;
 	}
