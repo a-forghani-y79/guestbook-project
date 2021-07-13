@@ -1,4 +1,5 @@
-<%@include file = "../init.jsp" %>
+<%@ page import="com.liferay.blogs.model.BlogsEntry" %>
+<%@include file="../init.jsp" %>
 
 <%
     long guestbookId = ParamUtil.getLong(request, "guestbookId");
@@ -11,24 +12,52 @@
 %>
 
 <portlet:renderURL var="viewURL">
-    <portlet:param name="mvcPath" value="/guestbook_admin/view.jsp" />
+    <portlet:param name="mvcPath" value="/guestbook_admin/view.jsp"/>
 </portlet:renderURL>
 
-<portlet:actionURL name='<%= guestbook == null ? "addGuestbook" : "updateGuestbook" %>' var="editGuestbookURL" />
+<portlet:actionURL name='<%= guestbook == null ? "addGuestbook" : "updateGuestbook" %>' var="editGuestbookURL"/>
 
 <aui:form action="<%= editGuestbookURL %>" name="fm">
 
-    <aui:model-context bean="<%= guestbook %>" model="<%= Guestbook.class %>" />
+    <aui:model-context bean="<%= guestbook %>" model="<%= Guestbook.class %>"/>
 
     <aui:input type="hidden" name="guestbookId"
-               value='<%= guestbook == null ? "" : guestbook.getGuestbookId() %>' />
+               value='<%= guestbook == null ? "" : guestbook.getGuestbookId() %>'/>
 
     <aui:fieldset>
-        <aui:input name="name" />
+        <aui:input name="name"/>
     </aui:fieldset>
 
     <aui:button-row>
-        <aui:button type="submit" />
-        <aui:button onClick="<%= viewURL %>" type="cancel"  />
+        <aui:button type="submit"/>
+        <aui:button onClick="<%= viewURL %>" type="cancel"/>
     </aui:button-row>
+
+    <liferay-asset:asset-categories-error/>
+    <liferay-asset:asset-tags-error/>
+
+    <c:if test="<%= guestbook != null %>">
+        <liferay-ui:panel defaultState="closed" extended="<%= true %>"
+                          id="guestbookCategorizationPanel" persistState="<%= true %>"
+                          title="categorization">
+
+            <aui:fieldset>
+                <liferay-asset:asset-categories-selector className="<%= Guestbook.class.getName() %>"
+                                                         classPK="<%= guestbook.getGuestbookId() %>"/>
+                <liferay-asset:asset-tags-selector className="<%= Guestbook.class.getName() %>"
+                                                   classPK="<%= guestbook.getGuestbookId() %>"/>
+            </aui:fieldset>
+
+        </liferay-ui:panel>
+
+        <liferay-ui:panel defaultState="closed" extended="<%= true %>"
+                          id="guestbookAssetLinksPanel" persistState="<%= true %>"
+                          title="related-assets">
+            <aui:fieldset>
+                <liferay-asset:input-asset-links
+                        className="com.liferay.docs.guestbook.model.Guestbook"
+                        classPK="<%= guestbookId %>"/>
+            </aui:fieldset>
+        </liferay-ui:panel>
+    </c:if>
 </aui:form>
