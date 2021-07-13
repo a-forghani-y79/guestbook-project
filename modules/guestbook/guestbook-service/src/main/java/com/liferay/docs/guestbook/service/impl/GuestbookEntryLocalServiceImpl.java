@@ -19,6 +19,7 @@ import com.liferay.asset.kernel.model.AssetLinkConstants;
 import com.liferay.docs.guestbook.exception.GuestbookEntryEmailException;
 import com.liferay.docs.guestbook.exception.GuestbookEntryMessageException;
 import com.liferay.docs.guestbook.exception.GuestbookEntryNameException;
+import com.liferay.docs.guestbook.model.Guestbook;
 import com.liferay.docs.guestbook.model.GuestbookEntry;
 import com.liferay.docs.guestbook.service.base.GuestbookEntryLocalServiceBaseImpl;
 import com.liferay.portal.aop.AopService;
@@ -33,6 +34,8 @@ import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
 import org.osgi.service.component.annotations.Component;
 
 import java.util.Date;
@@ -93,6 +96,12 @@ public class GuestbookEntryLocalServiceImpl
         entry.setEmail(email);
         entry.setMessage(message);
 
+        entry.setStatus(WorkflowConstants.STATUS_DRAFT);
+        entry.setStatusByUserId(userId);
+        entry.setStatusByUserName(user.getFullName());
+        entry.setStatusDate(serviceContext.getModifiedDate(now));
+
+
         guestbookEntryPersistence.update(entry);
 
         // Calls to other Liferay frameworks go here
@@ -111,6 +120,10 @@ public class GuestbookEntryLocalServiceImpl
         assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
                 serviceContext.getAssetLinkEntryIds(),
                 AssetLinkConstants.TYPE_RELATED);
+
+        WorkflowHandlerRegistryUtil.startWorkflowInstance(entry.getCompanyId(), entry.getGroupId(), entry.getUserId(),
+                GuestbookEntry.class.getName(), entry.getPrimaryKey(), entry, serviceContext);
+
         return entry;
     }
 
@@ -178,6 +191,9 @@ public class GuestbookEntryLocalServiceImpl
 
         assetEntryLocalService.deleteEntry(assetEntry);
 
+        workflowInstanceLinkLocalService.deleteWorkflowInstanceLink(entry.getCompanyId(), entry.getGroupId(),
+                GuestbookEntry.class.getName(), entry.getEntryId());
+
         return entry;
     }
 
@@ -213,6 +229,25 @@ public class GuestbookEntryLocalServiceImpl
 
     public int getGuestbookEntriesCount(long groupId, long guestbookId) {
         return guestbookEntryPersistence.countByG_G(groupId, guestbookId);
+    }
+
+    public GuestbookEntry updateStatus(long userId, long guestbookId, long entryId,
+                                       int status, ServiceContext serviceContext) throws PortalException {
+        User user = userLocalService.getUser(userId);
+        GuestbookEntry guestbookEntry = getGuestbookEntry(entryId);
+
+        guestbookEntry.setStatusDate(new Date());
+        guestbookEntry.setStatus(status);
+        guestbookEntry.setStatusByUserName(user.getFullName());
+        guestbookEntry.setStatusByUserId(userId);
+
+        guestbookEntryPersistence.update(guestbookEntry);
+
+        assetEntryLocalService.updateVisible(GuestbookEntry.class.getName(), entryId,
+                status == WorkflowConstants.STATUS_APPROVED);
+
+        return guestbookEntry;
+
     }
 
     protected void validate(String name, String email, String entry)
