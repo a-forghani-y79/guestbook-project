@@ -39,6 +39,7 @@
 
 		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry"/>
 		<reference package-path="com.liferay.portlet.asset" entity="AssetLink"/>
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
 
 	</entity>
 	<entity name="GuestbookEntry" local-service="true" remote-service="true" uuid="true">		<!--guest book fields-->
