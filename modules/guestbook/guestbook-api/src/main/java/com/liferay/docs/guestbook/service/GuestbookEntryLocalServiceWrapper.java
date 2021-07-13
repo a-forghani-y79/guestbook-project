@@ -455,6 +455,16 @@ public class GuestbookEntryLocalServiceWrapper
 	}
 
 	@Override
+	public com.liferay.docs.guestbook.model.GuestbookEntry updateStatus(
+			long userId, long guestbookId, long entryId, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _guestbookEntryLocalService.updateStatus(
+			userId, guestbookId, entryId, status, serviceContext);
+	}
+
+	@Override
 	public GuestbookEntryLocalService getWrappedService() {
 		return _guestbookEntryLocalService;
 	}
