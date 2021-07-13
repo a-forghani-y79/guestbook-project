@@ -110,7 +110,8 @@ public class GuestbookAssetRendererFactory extends
         return "bookmarks";
     }
 
-    @Reference(target = "(osgi.web.symbolicname=com.liferay.docs.guestbook.portlet)",
+    @Reference(
+//            target = "(osgi.web.symbolicname=com.liferay.docs.guestbook.portlet)",
             unbind = "-")
     public void setServletContext(ServletContext servletContext) {
         _servletContext = servletContext;

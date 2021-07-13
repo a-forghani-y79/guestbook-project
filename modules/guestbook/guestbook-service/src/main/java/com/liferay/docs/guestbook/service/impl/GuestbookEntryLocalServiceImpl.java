@@ -110,7 +110,8 @@ public class GuestbookEntryLocalServiceImpl
 
         assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
                 serviceContext.getAssetLinkEntryIds(),
-                AssetLinkConstants.TYPE_RELATED);        return entry;
+                AssetLinkConstants.TYPE_RELATED);
+        return entry;
     }
 
     @Indexable(type = IndexableType.REINDEX)
