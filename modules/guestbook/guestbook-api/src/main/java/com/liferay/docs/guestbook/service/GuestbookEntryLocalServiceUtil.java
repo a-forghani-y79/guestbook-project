@@ -326,6 +326,13 @@ public class GuestbookEntryLocalServiceUtil {
 		return getService().getGuestbookEntriesCount(groupId, guestbookId);
 	}
 
+	public static int getGuestbookEntriesCount(
+		long groupId, long guestbookId, int status) {
+
+		return getService().getGuestbookEntriesCount(
+			groupId, guestbookId, status);
+	}
+
 	/**
 	 * Returns the guestbook entry with the primary key.
 	 *
@@ -352,6 +359,13 @@ public class GuestbookEntryLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getGuestbookEntryByUuidAndGroupId(uuid, groupId);
+	}
+
+	public static List<GuestbookEntry> getGuestbooks(
+		long groupId, long guestbookId, int status, int start, int end) {
+
+		return getService().getGuestbooks(
+			groupId, guestbookId, status, start, end);
 	}
 
 	public static

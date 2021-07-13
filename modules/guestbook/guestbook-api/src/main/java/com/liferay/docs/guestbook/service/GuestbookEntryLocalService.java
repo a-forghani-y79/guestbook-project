@@ -287,6 +287,10 @@ public interface GuestbookEntryLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getGuestbookEntriesCount(long groupId, long guestbookId);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getGuestbookEntriesCount(
+		long groupId, long guestbookId, int status);
+
 	/**
 	 * Returns the guestbook entry with the primary key.
 	 *
@@ -310,6 +314,10 @@ public interface GuestbookEntryLocalService
 	public GuestbookEntry getGuestbookEntryByUuidAndGroupId(
 			String uuid, long groupId)
 		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<GuestbookEntry> getGuestbooks(
+		long groupId, long guestbookId, int status, int start, int end);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();

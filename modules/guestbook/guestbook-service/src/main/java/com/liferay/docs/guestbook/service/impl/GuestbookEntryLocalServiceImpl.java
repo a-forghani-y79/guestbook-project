@@ -250,6 +250,14 @@ public class GuestbookEntryLocalServiceImpl
 
     }
 
+    public List<GuestbookEntry> getGuestbooks(long groupId,long guestbookId, int status, int start, int end){
+        return guestbookEntryPersistence.findByG_G_S(groupId, guestbookId, status, start, end);
+    }
+
+    public int getGuestbookEntriesCount(long groupId, long guestbookId, int status){
+        return guestbookEntryPersistence.countByG_G_S(groupId, guestbookId, status);
+    }
+
     protected void validate(String name, String email, String entry)
             throws PortalException {
 

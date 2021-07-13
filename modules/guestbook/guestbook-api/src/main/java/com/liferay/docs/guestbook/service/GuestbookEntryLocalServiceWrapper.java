@@ -365,6 +365,14 @@ public class GuestbookEntryLocalServiceWrapper
 			groupId, guestbookId);
 	}
 
+	@Override
+	public int getGuestbookEntriesCount(
+		long groupId, long guestbookId, int status) {
+
+		return _guestbookEntryLocalService.getGuestbookEntriesCount(
+			groupId, guestbookId, status);
+	}
+
 	/**
 	 * Returns the guestbook entry with the primary key.
 	 *
@@ -395,6 +403,15 @@ public class GuestbookEntryLocalServiceWrapper
 
 		return _guestbookEntryLocalService.getGuestbookEntryByUuidAndGroupId(
 			uuid, groupId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.docs.guestbook.model.GuestbookEntry>
+		getGuestbooks(
+			long groupId, long guestbookId, int status, int start, int end) {
+
+		return _guestbookEntryLocalService.getGuestbooks(
+			groupId, guestbookId, status, start, end);
 	}
 
 	@Override
